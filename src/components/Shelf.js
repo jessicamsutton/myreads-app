@@ -2,26 +2,27 @@ import React from 'react'
 import Book from './Book.js'
 
 class Shelf extends React.Component {
-  constructor(props) {
-    super();
-    this.shelves = ['Currently Reading', 'Want to Read', 'Read'];
-  }
-
   render() {
+    const books = this.props.books;
+    let list = books
+      .filter((book) => book.shelf === this.props.id)
+      .map((book) =>
+        <Book
+          book={book}
+          updateShelf={this.props.updateShelf}
+        />
+    );
+
     return (
       <div>
-        {this.shelves.map(i => {
-          return <div className="bookshelf">
-                    <h2 className="bookshelf-title">{i}</h2>
-                      <div className="bookshelf-books">
-                        <ol className="books-grid">
-                          <li>
-                            <Book />
-                          </li>
-                        </ol>
-                      </div>
-                  </div>
-        })}
+        <div className="bookshelf" key={this.props.id}>
+          <h2 className="bookshelf-title">{this.props.name}</h2>
+            <div className="bookshelf-books">
+              <ol className="books-grid">
+                {list}
+              </ol>
+            </div>
+        </div>
       </div>
     )
   }
