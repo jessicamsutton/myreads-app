@@ -1,20 +1,38 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
 import Header from './components/Header.js'
 import MainPage from './components/Mainpage.js'
-import SearchPage from './components/Searchpage.js'
+import SearchPage from './components/SearchPage.js'
 import './App.css'
+import * as BooksAPI from './BooksAPI.js'
 
 class App extends React.Component {
-  state = {
-    books: []
+  constructor() {
+    super();
+    this.state = {
+      books: [],
+    };
   }
 
   componentDidMount() {
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books })
-    })
+    BooksAPI.getAll()
+      .then((books) => {
+        this.setState({
+          books: books,
+        });
+      }
+    );
+  }
+
+  updateShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf);
+    BooksAPI.getAll()
+      .then((books) => {
+        this.setState({
+          books: books,
+        });
+      }
+    );
   }
 
   render() {
@@ -24,10 +42,16 @@ class App extends React.Component {
           <Header />
         )} />
         <Route exact path="/" render={() => (
-          <MainPage />
+          <MainPage
+            books={this.state.books}
+            updateShelf={this.updateShelf}
+          />
         )} />
         <Route path="/search" render={() => (
-          <SearchPage />
+          <SearchPage
+            books={this.state.books}
+            updateShelf={this.updateShelf}
+          />
         )} />
       </div>
     )
