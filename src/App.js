@@ -11,6 +11,8 @@ class App extends React.Component {
     super();
     this.state = {
       books: [],
+      query: '',
+      results: [],
     };
   }
 
@@ -35,6 +37,19 @@ class App extends React.Component {
     );
   }
 
+  updateSearch = (query) => {
+    this.setState({
+      query: query,
+    });
+
+    BooksAPI.search(query)
+      .then((results) => {
+        this.setState({
+          results: results,
+        });
+      })
+  }
+
   render() {
     return (
       <div className="app">
@@ -51,6 +66,9 @@ class App extends React.Component {
           <SearchPage
             books={this.state.books}
             updateShelf={this.updateShelf}
+            updateSearch={this.updateSearch}
+            results={this.state.results}
+            query={this.state.query}
           />
         )} />
       </div>
