@@ -9,6 +9,11 @@ class Shelf extends React.Component {
       .map((book) =>
         <Book
           book={book}
+          key={book.id}
+          url={book.imageLinks.thumbnail ? book.imageLinks.thumbnail : ''}
+          title={book.title}
+          author={book.authors ? book.authors : ''}
+          currentShelf={book.shelf}
           updateShelf={this.props.updateShelf}
         />
     );
