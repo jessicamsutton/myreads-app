@@ -21,17 +21,17 @@ class SearchPage extends React.Component {
           <ol className="books-grid">
             {this.props.results &&
               this.props.results
-                .map((book) => (
-                  <Book
-                    book={book}
-                    key={book.id}
-                    url={book.imageLinks ? book.imageLinks.thumbnail : ''}
-                    title={book.title}
-                    author={book.authors ? book.authors : ''}
-                    currentShelf={book.shelf}
-                    updateShelf={this.props.updateShelf}
-                  />
-              ))
+                .map((book) =>
+                    <Book
+                      book={book}
+                      key={book.id}
+                      url={book.imageLinks ? book.imageLinks.thumbnail : ''}
+                      title={book.title}
+                      author={book.authors ? book.authors : ''}
+                      currentShelf={book.shelf}
+                      updateShelf={this.props.updateShelf}
+                    />
+              )
             }
           </ol>
         </div>
