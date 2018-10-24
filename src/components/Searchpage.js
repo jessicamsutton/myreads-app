@@ -25,7 +25,7 @@ class SearchPage extends React.Component {
                   <Book
                     book={book}
                     key={book.id}
-                    url={book.imageLinks.thumbnail ? book.imageLinks.thumbnail : ''}
+                    url={book.imageLinks ? book.imageLinks.thumbnail : ''}
                     title={book.title}
                     author={book.authors ? book.authors : ''}
                     currentShelf={book.shelf}

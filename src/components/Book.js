@@ -30,7 +30,7 @@ class Book extends React.Component {
 Book.propTypes = {
   currentShelf: PropTypes.func,
   updateShelf: PropTypes.func,
-  url: PropTypes.string,
+  url: PropTypes.string.isRequired,
   title: PropTypes.string,
 };
 
