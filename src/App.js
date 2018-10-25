@@ -44,10 +44,17 @@ class App extends React.Component {
 
     BooksAPI.search(query)
       .then((results) => {
-        this.setState({
-          results: results,
-        });
+        if (results.error) {
+          this.setState({
+            results: [],
+          })
+        } else {
+          this.setState({
+            results: results,
+          });
+        }
       })
+      .catch(error => console.log(error))
   }
 
   render() {
