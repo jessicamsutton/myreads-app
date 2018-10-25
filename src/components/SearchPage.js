@@ -2,8 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Book from './Book.js'
 
-class SearchPage extends React.Component {
-  render() {
+function SearchPage (props) {
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -12,15 +11,15 @@ class SearchPage extends React.Component {
             <input
               type="text"
               placeholder="Search by title or author"
-              value={this.props.query}
-              onChange={e => this.props.updateSearch(e.target.value)}
+              value={props.query}
+              onChange={e => props.updateSearch(e.target.value)}
             />
           </div>
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.props.results &&
-              this.props.results
+            {props.results &&
+              props.results
                 .map((book) =>
                     <Book
                       book={book}
@@ -29,7 +28,7 @@ class SearchPage extends React.Component {
                       title={book.title}
                       author={book.authors ? book.authors : ''}
                       currentShelf={book.shelf}
-                      updateShelf={this.props.updateShelf}
+                      updateShelf={props.updateShelf}
                     />
               )
             }
@@ -37,7 +36,6 @@ class SearchPage extends React.Component {
         </div>
       </div>
     )
-  }
 }
 
 export default SearchPage
