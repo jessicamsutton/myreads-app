@@ -13,7 +13,7 @@ class Shelf extends React.Component {
           url={book.imageLinks ? book.imageLinks.thumbnail : ''}
           title={book.title}
           author={book.authors ? book.authors : ''}
-          currentShelf={book.shelf}
+          currentShelf={book.shelf ? book.shelf : ''}
           updateShelf={this.props.updateShelf}
         />
     );
