@@ -6,7 +6,9 @@ This is a small React app created for the Udacity Front End Nanodegree.
 * [Dependencies](#dependencies)
 
 ## Instructions
-Run the app on a local web server using the command "start" (i.e. "npm start" or "yarn start"). You can add books to different shelves on both the main page and search page.
+This app can be run on a local web server. Use commands `npm install` followed by `npm start`.
+
+You can add books to different shelves on both the main page and search page.
 
 ## Dependencies
 * react
