@@ -44,7 +44,7 @@ class App extends React.Component {
 
     BooksAPI.search(query)
       .then((results) => {
-        if (results.error) {
+        if (results === undefined) {
           this.setState({
             results: [],
           })
@@ -72,10 +72,10 @@ class App extends React.Component {
         <Route path="/search" render={() => (
           <SearchPage
             books={this.state.books}
-            updateShelf={this.updateShelf}
-            updateSearch={this.updateSearch}
             results={this.state.results}
             query={this.state.query}
+            updateShelf={this.updateShelf}
+            updateSearch={this.updateSearch}
           />
         )} />
       </div>
