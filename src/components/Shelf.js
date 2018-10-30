@@ -3,19 +3,19 @@ import Book from './Book.js'
 
 class Shelf extends React.Component {
   render() {
-    const books = this.props.books;
-    let list = books
+    let list = this.props.books
       .filter((book) => book.shelf === this.props.id)
       .map((book) =>
-        <Book
-          book={book}
-          key={book.id}
-          url={book.imageLinks ? book.imageLinks.thumbnail : ''}
-          title={book.title}
-          author={book.authors ? book.authors : ''}
-          currentShelf={book.shelf ? book.shelf : ''}
-          updateShelf={this.props.updateShelf}
-        />
+        <li key={book.id}>
+          <Book
+            book={book}
+            url={book.imageLinks ? book.imageLinks.thumbnail : ''}
+            title={book.title}
+            author={book.authors ? book.authors : ''}
+            currentShelf={book.shelf ? book.shelf : ''}
+            updateShelf={this.props.updateShelf}
+          />
+        </li>
     );
 
     return (

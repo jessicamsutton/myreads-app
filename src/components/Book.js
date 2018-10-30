@@ -6,7 +6,6 @@ class Book extends React.Component {
   render() {
     return (
       <div>
-        <li>
           <div className="book">
             <div className="book-top">
               <div className="book-cover"
@@ -22,7 +21,6 @@ class Book extends React.Component {
             <div className="book-title">{this.props.title}</div>
             <div className="book-authors">{this.props.author}</div>
           </div>
-        </li>
       </div>
     )
   }
