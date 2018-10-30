@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Book from './Book.js'
 
-const SearchPage = ({ results, updateSearch, query, updateShelf, books}) => {
+function SearchPage(props) {
 
   function returnShelf(book, books) {
     let foundBook = books.filter(b => b.id === book.id);
@@ -22,29 +22,26 @@ const SearchPage = ({ results, updateSearch, query, updateShelf, books}) => {
           <input
             type="text"
             placeholder="Search by title or author"
-            value={query}
-            onChange={e => updateSearch(e.target.value)}
+            value={props.query}
+            onChange={e => props.updateSearch(e.target.value)}
           />
         </div>
       </div>
       <div className="search-books-results">
         <ol className="books-grid">
-          {results &&
-            results.map((book) => {
-              const { id, imageLinks, authors, title } = book;
-              return (
-                <li key={id}>
+          {props.results &&
+            props.results.map((book) =>
+                <li key={book.id}>
                   <Book
                     book={book}
-                    url={imageLinks ? imageLinks.thumbnail : null}
-                    title={title}
-                    author={authors ? authors : ''}
-                    currentShelf={returnShelf(book, books)}
-                    updateShelf={updateShelf}
+                    url={book.imageLinks ? book.imageLinks.thumbnail : null}
+                    title={book.title}
+                    author={book.authors ? book.authors : ''}
+                    currentShelf={returnShelf(book, props.books)}
+                    updateShelf={props.updateShelf}
                   />
                 </li>
-              )
-            })
+            )
           }
         </ol>
       </div>
