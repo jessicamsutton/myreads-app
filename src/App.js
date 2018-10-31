@@ -11,8 +11,6 @@ class App extends React.Component {
     super();
     this.state = {
       books: [],
-      query: '',
-      results: [],
     };
   }
 
@@ -37,26 +35,6 @@ class App extends React.Component {
     })
   }
 
-  updateSearch = (query) => {
-    this.setState({
-      query: query,
-    });
-
-    BooksAPI.search(query)
-      .then((results) => {
-        if (results === undefined) {
-          this.setState({
-            results: [],
-          })
-        } else {
-          this.setState({
-            results: results,
-          });
-        }
-      })
-      .catch(error => console.log(error))
-  }
-
   render() {
     return (
       <div className="app">
@@ -72,10 +50,7 @@ class App extends React.Component {
         <Route path="/search" render={() => (
           <SearchPage
             books={this.state.books}
-            results={this.state.results}
-            query={this.state.query}
             updateShelf={this.updateShelf}
-            updateSearch={this.updateSearch}
           />
         )} />
       </div>
