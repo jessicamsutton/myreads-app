@@ -14,4 +14,5 @@ You can add books to different shelves on both the main page and search page.
 * react
 * react-dom
 * react-router-dom
+* react-debounce-input
 * prop-types
